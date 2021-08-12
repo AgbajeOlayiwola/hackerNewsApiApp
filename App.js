@@ -1,26 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View,ScrollView, SafeAreaView, FlatList, ActivityIndicator } from 'react-native';
+import * as React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { Button, StyleSheet, Text, View,ScrollView, SafeAreaView, FlatList, ActivityIndicator } from 'react-native';
 import { Stories } from './components/stories';
-import Story from './components/stories/Story'; 
+import About from './screens/about';
+import Welcome from './screens/welcome';
+import Login from './screens/login';
 
 
-const App = ()=> {
+const Stack = createNativeStackNavigator();
 
-
+function App() {
   return (
-    <ScrollView>
-    <View style={styles.container}>
-        <Stories/>
-    </View>
-    </ScrollView>
-    
+    <NavigationContainer
+    animationEnabled='true'
+    animationTypeForReplace='push'>
+      <Stack.Navigator>
+        <Stack.Screen 
+        name="Login" component={Login} />
+        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="About" component={About} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4F6D7A',
     alignItems: 'center',
     justifyContent: 'center',
   },

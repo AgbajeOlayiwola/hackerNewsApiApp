@@ -3,6 +3,7 @@ import { Story } from './Story';
 import { getStories } from '../../services/api';
 
 export const Stories = () => {
+  
   const [storyIds, setStoryIds] = useState([]);
 
   useEffect(() => {
